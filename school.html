@@ -2,39 +2,78 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>داخل المدرسة | مدرسة الأخلاق والعلم والعمل</title>
 <link rel="stylesheet" href="style.css">
 <style>
-.auth-panel{max-width:520px;margin:35px auto;padding:28px;border:1px solid #d9cda8;border-radius:20px;background:#fff;box-shadow:0 12px 35px #10243b12}.auth-panel h2{margin-top:0;color:#142c42}.auth-panel label{display:block;margin:15px 0 6px;font-weight:700}.auth-panel input{width:100%;box-sizing:border-box;border:1px solid #b9c4cb;border-radius:10px;padding:13px;font:inherit;direction:ltr;text-align:left}.auth-panel button{margin-top:18px;border:0;border-radius:10px;padding:12px 22px;background:#183c55;color:white;font:inherit;cursor:pointer}.auth-panel button:disabled{opacity:.6;cursor:wait}.auth-panel .status{min-height:25px;margin-top:12px;line-height:1.8}.auth-panel .hint{font-size:.9rem;color:#566474}.private-school[hidden],.auth-panel[hidden]{display:none!important}
+.auth-panel{max-width:620px;margin:35px auto;padding:28px;border:1px solid #d9cda8;border-radius:20px;background:#fff;box-shadow:0 12px 35px #10243b12}
+.auth-panel h2{margin-top:0;color:#142c42}.auth-panel label{display:block;margin:15px 0 6px;font-weight:700}
+.auth-panel input{width:100%;box-sizing:border-box;border:1px solid #b9c4cb;border-radius:10px;padding:13px;font:inherit;direction:ltr;text-align:left}
+.auth-panel button,.admin-button{margin-top:12px;border:0;border-radius:10px;padding:12px 18px;background:#183c55;color:white;font:inherit;cursor:pointer}
+.auth-panel button:disabled,.admin-button:disabled{opacity:.6;cursor:wait}.status{min-height:25px;margin-top:12px;line-height:1.8}
+.hint{font-size:.9rem;color:#566474}[hidden]{display:none!important}
+.student-request{border:1px solid #e3e7eb;border-radius:12px;padding:15px;margin:12px 0;background:#f9fafb;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.student-request p{margin:0;overflow-wrap:anywhere}.student-request button{margin:0}.notice{padding:15px;border-radius:12px;background:#fff8e5;border:1px solid #e7d6a5}
 </style>
 </head>
 <body>
 <header class="top"><div class="shell nav"><a class="brand" href="index.html"><span class="seal">✦</span><span><strong>مدرسة الأخلاق والعلم والعمل</strong><small>العلم • الأخلاق • العمل</small></span></a><nav class="links"><a href="index.html">الرئيسية</a><a href="school.html">المدرسة الإلكترونية</a><a href="wisal.html">وصال</a><a href="noor.html">نور أولياء الأمور ↗</a></nav></div></header>
 <section class="hero"><div class="shell"><span class="eyebrow">المدرسة الإلكترونية</span><h1>حرم تعليمي متكامل</h1><p>الصفوف والدروس والواجبات والمكتبة والاختبارات والإدارة والتواصل في مكان واحد.</p><div class="actions"><a class="btn secondary" href="index.html">العودة إلى الرئيسية</a></div></div></section>
 <main class="shell content">
-<section id="loginPanel" class="auth-panel"><h2>الدخول إلى المدرسة</h2><p>أدخل البريد الإلكتروني وكلمة المرور لحسابك في المدرسة.</p><form id="loginForm"><label for="email">البريد الإلكتروني</label><input id="email" type="email" autocomplete="username" required placeholder="name@example.com"><label for="password">كلمة المرور</label><input id="password" type="password" autocomplete="current-password" required minlength="6"><button id="loginButton" type="submit">تسجيل الدخول</button></form><p id="loginStatus" class="status" role="status" aria-live="polite"></p><p class="hint">هذه الصفحة مخصصة للحسابات التي أنشأتها الإدارة مسبقًا.</p></section>
-<section id="privateSchool" class="private-school" hidden><div class="auth-panel"><h2 id="welcome">مرحبًا بك في المدرسة</h2><p id="roleInfo"></p><button id="logoutButton" type="button">تسجيل الخروج</button></div><h2 class="sectiontitle">أقسام المدرسة</h2><p class="sub">الأقسام التالية واجهات أولية؛ الدروس والاختبارات والمراسلة لم تُفعّل بعد.</p><div class="grid"><article class="card"><span class="ico">🎓</span><h3>الصفوف الدراسية</h3><p>المواد والصفوف والجدول الدراسي — قريبًا</p></article><article class="card"><span class="ico">📚</span><h3>المكتبة الرقمية</h3><p>الكتب والملفات التعليمية — قريبًا</p></article><article class="card"><span class="ico">📝</span><h3>الاختبارات</h3><p>الاختبارات والواجبات — قريبًا</p></article><article class="card"><span class="ico">👨‍🏫</span><h3>بوابة المعلمين</h3><p>إعداد الدروس ومتابعة الصفوف — قريبًا</p></article><article class="card"><span class="ico">🏅</span><h3>الشهادات والإنجاز</h3><p>الشارة الذهبية ونقاط التميز — قريبًا</p></article><article class="card"><span class="ico">💬</span><h3>وصال</h3><p>المراسلة والمكالمات — قريبًا</p></article></div></section>
-</main><footer class="footer">مدرسة الأخلاق والعلم والعمل — نظام الدخول متصل بـ Supabase؛ بقية الخدمات قيد التطوير.</footer>
+<section id="loginPanel" class="auth-panel" hidden><h2>الدخول إلى المدرسة</h2><p>أدخل البريد الإلكتروني وكلمة المرور لحسابك في المدرسة.</p><form id="loginForm"><label for="email">البريد الإلكتروني</label><input id="email" type="email" autocomplete="username" required placeholder="name@example.com"><label for="password">كلمة المرور</label><input id="password" type="password" autocomplete="current-password" required minlength="6"><button id="loginButton" type="submit">تسجيل الدخول</button></form><p id="loginStatus" class="status" role="status" aria-live="polite"></p><p class="hint">التسجيل الجديد غير مفتوح حاليًا. حسابات الطلاب الجديدة تحتاج إلى موافقة المدير.</p></section>
+<section id="waitingPanel" class="auth-panel" hidden><h2>حسابك بانتظار الموافقة</h2><p class="notice">تم تسجيل الدخول إلى حسابك، لكن لا يمكنك دخول أقسام المدرسة حتى يوافق المدير على طلبك.</p><button id="waitingLogout" type="button">تسجيل الخروج</button></section>
+<section id="privateSchool" hidden><div class="auth-panel"><h2 id="welcome">مرحبًا بك في المدرسة</h2><p id="roleInfo"></p><button id="logoutButton" type="button">تسجيل الخروج</button></div>
+<section id="adminPanel" class="auth-panel" hidden><h2>لوحة المدير — طلبات الطلاب</h2><p>هنا تظهر حسابات الطلاب التي تنتظر موافقتك.</p><button id="refreshStudents" type="button">تحديث الطلبات</button><p id="adminStatus" class="status" role="status" aria-live="polite"></p><div id="studentRequests"></div></section>
+<h2 class="sectiontitle">أقسام المدرسة</h2><p class="sub">هذه الأقسام واجهات أولية؛ الدروس والاختبارات والمراسلة لم تُفعّل بعد.</p><div class="grid"><article class="card"><span class="ico">🎓</span><h3>الصفوف الدراسية</h3><p>المواد والصفوف والجدول الدراسي — قريبًا</p></article><article class="card"><span class="ico">📚</span><h3>المكتبة الرقمية</h3><p>الكتب والملفات التعليمية — قريبًا</p></article><article class="card"><span class="ico">📝</span><h3>الاختبارات</h3><p>الاختبارات والواجبات — قريبًا</p></article><article class="card"><span class="ico">👨‍🏫</span><h3>بوابة المعلمين</h3><p>إعداد الدروس ومتابعة الصفوف — قريبًا</p></article><article class="card"><span class="ico">🏅</span><h3>الشهادات والإنجاز</h3><p>الشارة الذهبية ونقاط التميز — قريبًا</p></article><article class="card"><span class="ico">💬</span><h3>وصال</h3><p>المراسلة والمكالمات — قريبًا</p></article></div></section>
+</main>
+<footer class="footer">مدرسة الأخلاق والعلم والعمل — نظام الحسابات متصل بـ Supabase؛ الخدمات التعليمية قيد التطوير.</footer>
 <script type="module">
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
-const supabase = createClient('https://luauvwbgkhzhywebvxjb.supabase.co', 'sb_publishable_i_fTA0hVNAjBuVsjlEURCQ_E47ur0dO');
-const loginPanel=document.getElementById('loginPanel'), privateSchool=document.getElementById('privateSchool'), status=document.getElementById('loginStatus'), button=document.getElementById('loginButton');
-function showLogin(){loginPanel.hidden=false;privateSchool.hidden=true;}
-async function showUser(user){
-  if(!user){showLogin();return;}
-  let name=user.email || 'مستخدم';let role='';
-  const {data,error}=await supabase.from('profiles').select('full_name,role').eq('id',user.id).maybeSingle();
-  if(!error && data){name=data.full_name||name;role=data.role||'';}
-  document.getElementById('welcome').textContent='مرحبًا بك، '+name;
-  document.getElementById('roleInfo').textContent=role==='admin'?'نوع الحساب: مدير المدرسة':role==='teacher'?'نوع الحساب: معلم':role==='student'?'نوع الحساب: طالب':'تم تسجيل الدخول بنجاح';
-  loginPanel.hidden=true;privateSchool.hidden=false;
+import {createClient} from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+const db=createClient('https://luauvwbgkhzhywebvxjb.supabase.co','sb_publishable_i_fTA0hVNAjBuVsjlEURCQ_E47ur0dO');
+const el=id=>document.getElementById(id);
+function show(which){for(const id of ['loginPanel','waitingPanel','privateSchool'])el(id).hidden=(id!==which);}
+async function loadStudents(){
+ const area=el('studentRequests');area.replaceChildren();el('adminStatus').textContent='جارٍ تحميل الطلبات...';
+ const {data,error}=await db.rpc('pending_students');
+ if(error){el('adminStatus').textContent='تعذر تحميل الطلبات. تحقق من إعدادات صلاحيات Supabase.';return;}
+ el('adminStatus').textContent=data?.length?`عدد الطلبات المنتظرة: ${data.length}`:'لا توجد طلبات معلقة حاليًا.';
+ for(const student of data||[]){
+  const row=document.createElement('div');row.className='student-request';
+  const name=document.createElement('p');name.textContent=student.full_name||'طالب جديد';
+  const approve=document.createElement('button');approve.className='admin-button';approve.type='button';approve.textContent='الموافقة على الطالب';
+  approve.addEventListener('click',async()=>{
+   if(!confirm('هل توافق على انضمام هذا الطالب إلى المدرسة؟'))return;
+   approve.disabled=true;approve.textContent='جارٍ الموافقة...';
+   const {error}=await db.rpc('approve_student',{student_id:student.id});
+   if(error){el('adminStatus').textContent='تعذرت الموافقة. تحقق من صلاحيات حساب المدير.';approve.disabled=false;approve.textContent='الموافقة على الطالب';return;}
+   await loadStudents();
+  });
+  row.append(name,approve);area.append(row);
+ }
 }
-document.getElementById('loginForm').addEventListener('submit',async(e)=>{
- e.preventDefault();button.disabled=true;status.textContent='جارٍ التحقق من الحساب...';
- try{const {data,error}=await supabase.auth.signInWithPassword({email:document.getElementById('email').value.trim(),password:document.getElementById('password').value});if(error)throw error;status.textContent='';document.getElementById('password').value='';await showUser(data.user);}catch(err){status.textContent='تعذر تسجيل الدخول. تأكد من البريد الإلكتروني وكلمة المرور وتفعيل الحساب.';}finally{button.disabled=false;}
+async function showUser(user){
+ if(!user){show('loginPanel');return;}
+ const {data,error}=await db.from('profiles').select('full_name,role,approval_status').eq('id',user.id).maybeSingle();
+ if(error){show('loginPanel');el('loginStatus').textContent='تعذر التحقق من صلاحية الحساب. حاول مجددًا.';return;}
+ if(!data||data.approval_status!=='approved'){show('waitingPanel');return;}
+ el('welcome').textContent='مرحبًا بك، '+(data.full_name||user.email||'مستخدم');
+ el('roleInfo').textContent=data.role==='admin'?'نوع الحساب: مدير المدرسة':data.role==='teacher'?'نوع الحساب: معلم':data.role==='student'?'نوع الحساب: طالب':'حساب معتمد';
+ el('adminPanel').hidden=data.role!=='admin';show('privateSchool');
+ if(data.role==='admin')await loadStudents();
+}
+el('loginForm').addEventListener('submit',async event=>{
+ event.preventDefault();el('loginButton').disabled=true;el('loginStatus').textContent='جارٍ التحقق من الحساب...';
+ try{
+  const {data,error}=await db.auth.signInWithPassword({email:el('email').value.trim(),password:el('password').value});
+  if(error)throw error;el('password').value='';el('loginStatus').textContent='';await showUser(data.user);
+ }catch{el('loginStatus').textContent='تعذر تسجيل الدخول. تأكد من البريد الإلكتروني وكلمة المرور.';}
+ finally{el('loginButton').disabled=false;}
 });
-document.getElementById('logoutButton').addEventListener('click',async()=>{await supabase.auth.signOut();showLogin();});
-(async()=>{try{const {data}=await supabase.auth.getUser();await showUser(data.user);}catch{showLogin();}})();
+async function logout(){await db.auth.signOut();show('loginPanel');}
+el('logoutButton').addEventListener('click',logout);
+el('waitingLogout').addEventListener('click',logout);
+el('refreshStudents').addEventListener('click',loadStudents);
+(async()=>{try{const {data,error}=await db.auth.getUser();if(error)throw error;await showUser(data.user);}catch{show('loginPanel');}})();
 </script>
-</body></html>
+</body>
+</html>
