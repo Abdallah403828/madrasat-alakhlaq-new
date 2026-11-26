@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>داخل المدرسة | مدرسة الأخلاق والعلم والعمل</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.auth-panel{max-width:620px;margin:35px auto;padding:28px;border:1px solid #d9cda8;border-radius:20px;background:#fff;box-shadow:0 12px 35px #10243b12}
+.auth-panel h2{margin-top:0;color:#142c42}.auth-panel label{display:block;margin:15px 0 6px;font-weight:700}
+.auth-panel input{width:100%;box-sizing:border-box;border:1px solid #b9c4cb;border-radius:10px;padding:13px;font:inherit;direction:ltr;text-align:left}
+.auth-panel button,.admin-button{margin-top:12px;border:0;border-radius:10px;padding:12px 18px;background:#183c55;color:white;font:inherit;cursor:pointer}
+.auth-panel button:disabled,.admin-button:disabled{opacity:.6;cursor:wait}.status{min-height:25px;margin-top:12px;line-height:1.8}
+.hint{font-size:.9rem;color:#566474}[hidden]{display:none!important}
+.student-request{border:1px solid #e3e7eb;border-radius:12px;padding:15px;margin:12px 0;background:#f9fafb;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.reject-button{background:#9b3030!important}.student-request p{margin:0;overflow-wrap:anywhere}.student-request button{margin:0}.notice{padding:15px;border-radius:12px;background:#fff8e5;border:1px solid #e7d6a5}
+.switch-button{background:transparent!important;color:#183c55!important;border:1px solid #183c55!important;margin-inline-start:8px}.signup-note{font-size:.9rem;line-height:1.8;color:#566474}
+.auth-link{display:inline-block;margin-top:14px;color:#183c55;text-decoration:underline;cursor:pointer;background:none;border:0;padding:0;font:inherit}.auth-panel .auth-link{background:none;color:#183c55;padding:0;margin-top:14px;text-decoration:underline}.auth-panel .auth-link:hover{color:#0a7894}
+
+/* لوحة المدرسة الجديدة: تصميم فقط دون تعديل منطق الحسابات */
+#privateSchool{width:100%}
+#privateSchool .dashboard{display:grid;grid-template-columns:230px minmax(0,1fr);gap:0;background:#f6f8fc;border:1px solid #e6eaf0;border-radius:26px;overflow:hidden;box-shadow:0 18px 55px #122c4114;min-height:750px}
+#privateSchool .dash-side{background:#102c42;color:#e9f1f6;padding:30px 17px;display:flex;flex-direction:column;gap:9px}
+#privateSchool .side-emblem{font-size:27px;font-weight:900;color:#edcf91;padding:4px 13px}#privateSchool .side-emblem span{font-size:20px;color:white}
+#privateSchool .side-caption{font-size:11px;color:#aabcc9;margin:0 13px 28px}
+#privateSchool .side-link{padding:13px 15px;border-radius:13px;color:#d1dce4;font-size:13px;font-weight:700;display:flex;align-items:center;gap:10px}
+#privateSchool .side-link:hover,#privateSchool .side-link.selected{background:#ffffff1c;color:#fff}
+#privateSchool .side-bottom{margin-top:auto;padding:24px 10px 0;color:#c9d6df;font-size:11px;line-height:2;border-top:1px solid #ffffff21}#privateSchool .side-bottom small{color:#d6b675}
+#privateSchool .dash-main{padding:28px 32px;min-width:0}
+#privateSchool .dash-toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;color:#587184;font-size:12px;font-weight:700;margin-bottom:23px}
+#privateSchool .dash-chip{background:white;border:1px solid #e2eaf0;border-radius:30px;padding:8px 13px}
+#privateSchool .dash-welcome{position:relative;display:flex;justify-content:space-between;gap:16px;align-items:center;background:linear-gradient(110deg,#163e53,#286d76);border-radius:23px;color:white;padding:30px 35px;overflow:hidden;min-height:220px}
+#privateSchool .dash-welcome:before{content:'';position:absolute;width:330px;height:330px;border:1px solid #ffffff23;border-radius:50%;left:-110px;top:-120px}
+#privateSchool .welcome-copy{position:relative;z-index:1;max-width:560px}#privateSchool .welcome-kicker{color:#e9d6aa;font-size:12px;font-weight:800}
+#privateSchool .dash-welcome h2{font-size:clamp(23px,3vw,34px);margin:9px 0;color:#fff;line-height:1.5}
+#privateSchool .dash-welcome p{font-size:12px;line-height:2;color:#e2eff2;max-width:500px}
+#privateSchool .welcome-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:16px}
+#privateSchool .welcome-btn{background:#e8c987;color:#1b3c49;border-radius:11px;padding:10px 16px;font-size:12px;font-weight:800}
+#privateSchool .role-tag{font-size:11px;color:#eaf2f5;border:1px solid #ffffff57;border-radius:30px;padding:8px 12px}
+#privateSchool .welcome-art{position:relative;min-width:160px;min-height:160px;display:grid;place-items:center;background:#ffffff16;border:1px solid #ffffff2c;border-radius:50%;transform:rotate(-8deg)}
+#privateSchool .art-book{font-size:85px;filter:drop-shadow(0 9px 8px #0002)}#privateSchool .art-sun{position:absolute;right:8px;top:5px;font-size:35px;color:#f1d393}#privateSchool .art-leaf{position:absolute;left:12px;bottom:3px;font-size:40px;color:#e6c68d}
+#privateSchool .dash-heading{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:30px 0 19px}
+#privateSchool .overline{font-size:11px;color:#b18749;font-weight:800}#privateSchool .dash-heading h2,#privateSchool .admin-head h2{margin:4px 0;font-size:23px;color:#193b50}
+#privateSchool .dash-heading p,#privateSchool .admin-head p{margin:3px 0;font-size:12px;color:#708393}
+#privateSchool .dash-logout{background:white;color:#4c6170;border:1px solid #dce5eb;border-radius:10px;padding:10px 13px;font-size:12px}
+#privateSchool .module-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+#privateSchool .module-card{overflow:hidden;background:#fff;border:1px solid #e5ebf1;border-radius:18px;box-shadow:0 7px 20px #142b4209;transition:transform .2s,box-shadow .2s}
+#privateSchool .module-card:hover{transform:translateY(-4px);box-shadow:0 13px 25px #142b421b}
+#privateSchool .module-image{height:126px;display:grid;place-items:center;position:relative;background-size:cover;background-position:center}
+#privateSchool .module-image:before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#102b4055,#102b401a)}
+#privateSchool .module-image span{position:relative;z-index:1;font-size:42px;background:#ffffffd9;border-radius:19px;width:70px;height:70px;display:grid;place-items:center;box-shadow:0 8px 20px #0002}
+#privateSchool .image-class{background-image:url('https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=75')}
+#privateSchool .image-library{background-image:url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=600&q=75')}
+#privateSchool .image-exam{background-image:url('https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=600&q=75')}
+#privateSchool .image-teacher{background-image:url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=75')}
+#privateSchool .image-award{background-image:url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=600&q=75')}
+#privateSchool .image-wisal{background-image:url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&q=75')}
+#privateSchool .module-body{padding:17px}#privateSchool .module-type{color:#b18850;font-size:10px;font-weight:800}
+#privateSchool .module-body h3{font-size:16px;margin:7px 0;color:#1b3b50}#privateSchool .module-body p{color:#738493;font-size:11px;line-height:1.9;min-height:40px;margin:5px 0 10px}
+#privateSchool .module-state{display:block;background:#f4f7fa;color:#6b7e8e;border-radius:9px;font-size:10px;padding:8px 10px;margin-top:9px}
+#privateSchool .module-link{font-size:12px;color:#146b7b;font-weight:800;display:inline-block;margin-bottom:5px}
+#privateSchool .admin-area{margin-top:30px;background:white;border:1px solid #e5ebf1;border-radius:19px;padding:24px}
+#privateSchool .admin-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+#privateSchool .dash-foot{color:#8594a1;font-size:10px;text-align:center;padding:28px 0 0}
+@media(max-width:1050px){#privateSchool .dashboard{grid-template-columns:175px minmax(0,1fr)}#privateSchool .dash-main{padding:22px}#privateSchool .module-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:720px){#privateSchool .dashboard{display:block}#privateSchool .dash-side{padding:12px;display:flex;flex-direction:row;flex-wrap:wrap;align-items:center}#privateSchool .side-emblem{font-size:18px}#privateSchool .side-emblem span{font-size:15px}#privateSchool .side-caption,#privateSchool .side-bottom{display:none}#privateSchool .side-link{padding:8px;font-size:11px}#privateSchool .dash-main{padding:16px}#privateSchool .dash-welcome{padding:24px 20px}#privateSchool .welcome-art{display:none}#privateSchool .dash-toolbar{flex-wrap:wrap}}
+@media(max-width:480px){#privateSchool .module-grid{grid-template-columns:1fr}#privateSchool .dash-heading h2{font-size:20px}#privateSchool .dash-logout{font-size:10px}#privateSchool .module-image{height:150px}}
+@media(prefers-reduced-motion:reduce){#privateSchool .module-card{transition:none}#privateSchool .module-card:hover{transform:none}}
+
+</style>
+</head>
+<body>
+<header class="top"><div class="shell nav"><a class="brand" href="index.html"><span class="seal">✦</span><span><strong>مدرسة الأخلاق والعلم والعمل</strong><small>العلم • الأخلاق • العمل</small></span></a><nav class="links"><a href="index.html">الرئيسية</a><a href="school.html">المدرسة الإلكترونية</a><a href="wisal.html">وصال</a><a href="noor.html">نور أولياء الأمور ↗</a></nav></div></header>
+<section class="hero"><div class="shell"><span class="eyebrow">المدرسة الإلكترونية</span><h1>حرم تعليمي متكامل</h1><p>الصفوف والدروس والواجبات والمكتبة والاختبارات والإدارة والتواصل في مكان واحد.</p><div class="actions"><a class="btn secondary" href="index.html">العودة إلى الرئيسية</a></div></div></section>
+<main class="shell content">
+<section id="loginPanel" class="auth-panel" hidden><h2>الدخول إلى المدرسة</h2><p>أدخل البريد الإلكتروني وكلمة المرور لحسابك في المدرسة.</p><form id="loginForm"><label for="email">البريد الإلكتروني</label><input id="email" type="email" autocomplete="username" required placeholder="name@example.com"><label for="password">كلمة المرور</label><input id="password" type="password" autocomplete="current-password" required minlength="6"><button id="loginButton" type="submit">تسجيل الدخول</button><button class="switch-button" id="openSignup" type="button">إنشاء حساب جديد</button></form><button id="forgotPassword" class="auth-link" type="button">نسيت كلمة المرور؟</button><p id="loginStatus" class="status" role="status" aria-live="polite"></p><p class="hint">تحتاج حسابات الطلاب الجديدة إلى تأكيد البريد الإلكتروني وموافقة المدير قبل دخول المدرسة.</p></section>
+<section id="signupPanel" class="auth-panel" hidden><h2>طلب إنشاء حساب طالب</h2><p class="notice">التسجيل التجريبي للطلاب تحت إشراف الإدارة. لا تُدخل بيانات طفل قاصر قبل استكمال آلية موافقة ولي الأمر وحماية بيانات الطلاب.</p><form id="signupForm"><label for="studentName">اسم الطالب</label><input id="studentName" type="text" dir="rtl" style="direction:rtl;text-align:right" autocomplete="name" minlength="2" maxlength="100" required><label for="studentEmail">البريد الإلكتروني</label><input id="studentEmail" type="email" autocomplete="email" required placeholder="name@example.com"><label for="studentPassword">كلمة المرور الجديدة</label><input id="studentPassword" type="password" autocomplete="new-password" minlength="8" required><label for="studentPasswordConfirm">تأكيد كلمة المرور</label><input id="studentPasswordConfirm" type="password" autocomplete="new-password" minlength="8" required><button id="signupButton" type="submit">إرسال طلب التسجيل</button><button id="backToLogin" class="switch-button" type="button">العودة إلى تسجيل الدخول</button></form><p id="signupStatus" class="status" role="status" aria-live="polite"></p><p class="signup-note">إذا كان إنشاء الحسابات الجديدة معطّلًا في Supabase فلن يُقبل الطلب حتى تفعّله الإدارة. وقد يلزم تأكيد البريد الإلكتروني قبل تسجيل الدخول.</p></section>
+<section id="forgotPanel" class="auth-panel" hidden><h2>استعادة كلمة المرور</h2><p>أدخل بريدك الإلكتروني المسجّل في المدرسة. سنرسل رابطًا لاختيار كلمة مرور جديدة عندما تسمح خدمة البريد بالإرسال.</p><form id="forgotForm"><label for="recoveryEmail">البريد الإلكتروني</label><input id="recoveryEmail" type="email" autocomplete="email" required placeholder="name@example.com"><button id="recoveryButton" type="submit">إرسال رابط الاستعادة</button><button id="backFromForgot" class="switch-button" type="button">العودة لتسجيل الدخول</button></form><p id="forgotStatus" class="status" role="status" aria-live="polite"></p><p class="hint">إذا ظهر خطأ email rate limit exceeded، انتظر حتى يُرفع الحد المؤقت، أو اضبط خدمة SMTP خاصة بالمشروع.</p></section>
+<section id="resetPanel" class="auth-panel" hidden><h2>تعيين كلمة مرور جديدة</h2><p>اختر كلمة مرور جديدة لحسابك.</p><form id="resetForm"><label for="newPassword">كلمة المرور الجديدة</label><input id="newPassword" type="password" autocomplete="new-password" minlength="8" required><label for="confirmNewPassword">تأكيد كلمة المرور</label><input id="confirmNewPassword" type="password" autocomplete="new-password" minlength="8" required><button id="resetButton" type="submit">حفظ كلمة المرور الجديدة</button></form><p id="resetStatus" class="status" role="status" aria-live="polite"></p></section>
+<section id="waitingPanel" class="auth-panel" hidden><h2>حسابك بانتظار الموافقة</h2><p class="notice">طلبك قيد المراجعة لدى مدير المدرسة. سنرسل قرار القبول أو الرفض إلى بريدك الإلكتروني بعد إتمام إعداد خدمة الإشعارات.</p><button id="waitingLogout" type="button">تسجيل الخروج</button></section>
+<section id="rejectedPanel" class="auth-panel" hidden><h2>نتيجة طلب التسجيل</h2><p class="notice">نعتذر، لم تتم الموافقة على طلب تسجيلك في المدرسة. يمكنك التواصل مع الإدارة للاستفسار.</p><button id="rejectedLogout" type="button">تسجيل الخروج</button></section>
+<section id="privateSchool" hidden>
+  <div class="dashboard">
+    <aside class="dash-side" aria-label="قائمة المدرسة">
+      <div class="side-emblem">✦ <span>مدرستي</span></div>
+      <div class="side-caption">مساحتك التعليمية</div>
+      <a class="side-link selected" href="#dashboard-home">⌂ <span>الرئيسية</span></a>
+      <a class="side-link" href="#learning-modules">▦ <span>الأقسام التعليمية</span></a>
+      <a class="side-link" href="wisal.html">✉ <span>وصال</span></a>
+      <a class="side-link" href="noor.html">♧ <span>بوابة ولي الأمر</span></a>
+      <div class="side-bottom">مدرسة الأخلاق والعلم والعمل<br><small>نتعلم لنرتقي</small></div>
+    </aside>
+    <div class="dash-main" id="dashboard-home">
+      <div class="dash-toolbar"><span>✦ بوابتك إلى العلم والمعرفة</span><span class="dash-chip">منصة تعليمية عربية</span></div>
+      <section class="dash-welcome">
+        <div class="welcome-copy"><span class="welcome-kicker">أهلًا بك في مدرستك</span><h2 id="welcome">مرحبًا بك في المدرسة</h2><p>ابدأ رحلتك التعليمية في بيئة تجمع العلم والأخلاق والعمل، وتابع أقسام المدرسة من مكان واحد.</p><div class="welcome-actions"><a href="#learning-modules" class="welcome-btn">استكشف أقسام المدرسة ←</a><span id="roleInfo" class="role-tag"></span></div></div>
+        <div class="welcome-art" aria-hidden="true"><span class="art-sun">✦</span><span class="art-book">📖</span><span class="art-leaf">✧</span></div>
+      </section>
+      <div class="dash-heading" id="learning-modules"><div><span class="overline">اكتشف عالمك</span><h2>أقسام المدرسة</h2><p>كل ما يخص رحلتك التعليمية في مكان واحد</p></div><button id="logoutButton" type="button" class="dash-logout">تسجيل الخروج</button></div>
+      <div class="module-grid">
+        <article class="module-card"><div class="module-image image-class"><span>🎓</span></div><div class="module-body"><span class="module-type">التعلّم</span><h3>الصفوف الدراسية</h3><p>مساحة مخصصة لتنظيم الصفوف والمواد الدراسية.</p><span class="module-state">تجهيز المحتوى جارٍ</span></div></article>
+        <article class="module-card"><div class="module-image image-library"><span>📚</span></div><div class="module-body"><span class="module-type">المعرفة</span><h3>المكتبة الرقمية</h3><p>قسم الكتب والمراجع والملفات التعليمية.</p><span class="module-state">تجهيز المحتوى جارٍ</span></div></article>
+        <article class="module-card"><div class="module-image image-exam"><span>📝</span></div><div class="module-body"><span class="module-type">التقييم</span><h3>الاختبارات والواجبات</h3><p>مكان الاختبارات والتمارين ومتابعة الإنجاز.</p><span class="module-state">لم تُفعّل الاختبارات بعد</span></div></article>
+        <article class="module-card"><div class="module-image image-teacher"><span>👩‍🏫</span></div><div class="module-body"><span class="module-type">المعلمون</span><h3>بوابة المعلمين</h3><p>مساحة إعداد الدروس ومتابعة الطلاب.</p><span class="module-state">قيد الإعداد</span></div></article>
+        <article class="module-card"><div class="module-image image-award"><span>🏅</span></div><div class="module-body"><span class="module-type">التميز</span><h3>الشهادات والإنجازات</h3><p>واجهة الشارات الذهبية ونقاط التميز.</p><span class="module-state">نظام النقاط لم يُفعّل بعد</span></div></article>
+        <article class="module-card"><div class="module-image image-wisal"><span>💬</span></div><div class="module-body"><span class="module-type">التواصل</span><h3>وصال</h3><p>اطّلع على واجهة التواصل المدرسي.</p><a class="module-link" href="wisal.html">فتح وصال ←</a><span class="module-state">المراسلة الحقيقية غير مفعّلة</span></div></article>
+      </div>
+      <section id="adminPanel" class="admin-area" hidden><div class="admin-head"><div><span class="overline">الإدارة</span><h2>طلبات تسجيل الطلاب</h2><p>مراجعة الطلبات الجديدة واتخاذ قرار القبول أو الرفض</p></div><button id="refreshStudents" type="button" class="admin-button">تحديث الطلبات</button></div><p id="adminStatus" class="status" role="status" aria-live="polite"></p><div id="studentRequests"></div></section>
+      <div class="dash-foot">مدرسة الأخلاق والعلم والعمل · نظام الحسابات فعّال، والخدمات التعليمية قيد التطوير</div>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="footer">مدرسة الأخلاق والعلم والعمل — نظام الحسابات متصل بـ Supabase؛ الخدمات التعليمية قيد التطوير.</footer>
+<script type="module">
+import {createClient} from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+const db=createClient('https://luauvwbgkhzhywebvxjb.supabase.co','sb_publishable_i_fTA0hVNAjBuVsjlEURCQ_E47ur0dO');
+const el=id=>document.getElementById(id);
+function show(which){for(const id of ['loginPanel','signupPanel','forgotPanel','resetPanel','waitingPanel','rejectedPanel','privateSchool'])el(id).hidden=(id!==which);}
+async function loadStudents(){
+ const area=el('studentRequests');area.replaceChildren();el('adminStatus').textContent='جارٍ تحميل الطلبات...';
+ const {data,error}=await db.rpc('pending_students');
+ if(error){el('adminStatus').textContent='تعذر تحميل الطلبات. تحقق من إعدادات صلاحيات Supabase.';return;}
+ el('adminStatus').textContent=data?.length?`عدد الطلبات المنتظرة: ${data.length}`:'لا توجد طلبات معلقة حاليًا.';
+ for(const student of data||[]){
+  const row=document.createElement('div');row.className='student-request';
+  const name=document.createElement('p');name.textContent=student.full_name||'طالب جديد';
+  const approve=document.createElement('button');approve.className='admin-button';approve.type='button';approve.textContent='الموافقة على الطالب';
+  const reject=document.createElement('button');reject.className='admin-button reject-button';reject.type='button';reject.textContent='رفض الطالب';
+  async function decide(decision){
+   if(!confirm(decision==='approved'?'هل توافق على قبول هذا الطالب؟':'هل تريد رفض طلب هذا الطالب؟'))return;
+   approve.disabled=true;reject.disabled=true;el('adminStatus').textContent='جارٍ تسجيل القرار...';
+   try{
+    const {data:{session}}=await db.auth.getSession();
+    if(!session)throw new Error('يرجى تسجيل الدخول من جديد');
+    const response=await fetch('https://luauvwbgkhzhywebvxjb.supabase.co/functions/v1/review-student',{
+     method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+session.access_token,'apikey':'sb_publishable_i_fTA0hVNAjBuVsjlEURCQ_E47ur0dO'},
+     body:JSON.stringify({student_id:student.id,decision})
+    });
+    const result=await response.json().catch(()=>({}));
+    if(!response.ok)throw new Error(result.error||'تعذر تسجيل القرار. تأكد من نشر وظيفة review-student في Supabase.');
+    await loadStudents();
+    el('adminStatus').textContent=result.email_sent?'تم تسجيل القرار وإرسال البريد الإلكتروني.':'تم تسجيل القرار، لكن لم يُرسل البريد. راجع إعدادات خدمة البريد.';
+   }catch(error){el('adminStatus').textContent=error.message||'حدث خطأ';approve.disabled=false;reject.disabled=false;}
+  }
+  approve.addEventListener('click',()=>decide('approved'));
+  reject.addEventListener('click',()=>decide('rejected'));
+  row.append(name,approve,reject);area.append(row);
+ }
+}
+async function showUser(user){
+ if(!user){show('loginPanel');return;}
+ const {data,error}=await db.from('profiles').select('full_name,role,approval_status').eq('id',user.id).maybeSingle();
+ if(error){show('loginPanel');el('loginStatus').textContent='تعذر التحقق من صلاحية الحساب. حاول مجددًا.';return;}
+ if(data?.approval_status==='rejected'){show('rejectedPanel');return;}
+ if(!data||data.approval_status!=='approved'){show('waitingPanel');return;}
+ el('welcome').textContent='مرحبًا بك، '+(data.full_name||user.email||'مستخدم');
+ el('roleInfo').textContent=data.role==='admin'?'نوع الحساب: مدير المدرسة':data.role==='teacher'?'نوع الحساب: معلم':data.role==='student'?'نوع الحساب: طالب':'حساب معتمد';
+ el('adminPanel').hidden=data.role!=='admin';show('privateSchool');
+ if(data.role==='admin')await loadStudents();
+}
+el('loginForm').addEventListener('submit',async event=>{
+ event.preventDefault();el('loginButton').disabled=true;el('loginStatus').textContent='جارٍ التحقق من الحساب...';
+ try{
+  const {data,error}=await db.auth.signInWithPassword({email:el('email').value.trim(),password:el('password').value});
+  if(error)throw error;el('password').value='';el('loginStatus').textContent='';await showUser(data.user);
+ }catch{el('loginStatus').textContent='تعذر تسجيل الدخول. تأكد من البريد الإلكتروني وكلمة المرور.';}
+ finally{el('loginButton').disabled=false;}
+});
+let recoveryMode=false;
+const resetRedirect=new URL('school.html',window.location.href).href;
+el('forgotPassword').addEventListener('click',()=>{el('recoveryEmail').value=el('email').value.trim();el('forgotStatus').textContent='';show('forgotPanel');});
+el('backFromForgot').addEventListener('click',()=>show('loginPanel'));
+el('forgotForm').addEventListener('submit',async event=>{
+ event.preventDefault();
+ const button=el('recoveryButton');button.disabled=true;el('forgotStatus').textContent='جارٍ إرسال رابط الاستعادة...';
+ try{
+  const {error}=await db.auth.resetPasswordForEmail(el('recoveryEmail').value.trim(),{redirectTo:resetRedirect});
+  if(error)throw error;
+  el('forgotStatus').textContent='إذا كان البريد مسجّلًا ويمكن إرسال الرسائل، ستصلك رسالة تحتوي على رابط الاستعادة. افحص صندوق البريد والرسائل غير المرغوب فيها.';
+ }catch(error){
+  el('forgotStatus').textContent=String(error?.message||'').toLowerCase().includes('rate limit')?'بلغت خدمة البريد الحد المسموح للإرسال. انتظر ثم حاول لاحقًا، أو اطلب من مدير النظام ضبط SMTP.':'تعذر إرسال الرابط حاليًا. تحقق من إعدادات البريد وروابط إعادة التوجيه في Supabase.';
+ }finally{button.disabled=false;}
+});
+el('resetForm').addEventListener('submit',async event=>{
+ event.preventDefault();
+ if(!recoveryMode){el('resetStatus').textContent='افتح رابط الاستعادة الذي وصلك في البريد أولًا.';return;}
+ const password=el('newPassword').value;
+ if(password!==el('confirmNewPassword').value){el('resetStatus').textContent='كلمتا المرور غير متطابقتين.';return;}
+ const button=el('resetButton');button.disabled=true;el('resetStatus').textContent='جارٍ حفظ كلمة المرور...';
+ try{
+  const {error}=await db.auth.updateUser({password});if(error)throw error;
+  el('newPassword').value='';el('confirmNewPassword').value='';
+  el('resetStatus').textContent='تم تغيير كلمة المرور بنجاح. يمكنك الآن تسجيل الدخول بكلمة المرور الجديدة.';
+  recoveryMode=false;
+  await db.auth.signOut();
+  history.replaceState(null,'',window.location.pathname);
+  setTimeout(()=>show('loginPanel'),2200);
+ }catch{el('resetStatus').textContent='تعذر تغيير كلمة المرور. قد يكون رابط الاستعادة منتهي الصلاحية؛ اطلب رابطًا جديدًا.';}
+ finally{button.disabled=false;}
+});
+db.auth.onAuthStateChange((event)=>{
+ if(event==='PASSWORD_RECOVERY'){
+  recoveryMode=true;show('resetPanel');
+ }
+});
+el('openSignup').addEventListener('click',()=>{el('signupStatus').textContent='';show('signupPanel');});
+el('backToLogin').addEventListener('click',()=>show('loginPanel'));
+el('signupForm').addEventListener('submit',async event=>{
+ event.preventDefault();
+ const name=el('studentName').value.trim(),email=el('studentEmail').value.trim(),password=el('studentPassword').value;
+ if(name.length<2){el('signupStatus').textContent='اكتب اسم الطالب بشكل صحيح.';return;}
+ if(password!==el('studentPasswordConfirm').value){el('signupStatus').textContent='كلمتا المرور غير متطابقتين.';return;}
+ const button=el('signupButton');button.disabled=true;el('signupStatus').textContent='جارٍ إرسال الطلب...';
+ try{
+  const {data,error}=await db.auth.signUp({email,password,options:{data:{full_name:name}}});
+  if(error)throw error;
+  el('studentPassword').value='';el('studentPasswordConfirm').value='';
+  el('signupStatus').textContent='تم استلام طلب التسجيل إذا أُنشئ الحساب بنجاح. يرجى تأكيد بريدك الإلكتروني. طلبك ينتظر مراجعة المدير، وسنرسل رسالة قبول أو رفض إلى بريدك بعد تفعيل خدمة إشعارات المدرسة. لا يمكنك الدخول قبل الموافقة.';
+  if(data.session){await db.auth.signOut();}
+ }catch(err){
+  el('signupStatus').textContent='لم يكتمل التسجيل. قد يكون تسجيل الحسابات الجديدة معطّلًا في Supabase، أو البريد مستخدمًا بالفعل. راجع إعدادات التسجيل.';
+ }finally{button.disabled=false;}
+});
+async function logout(){await db.auth.signOut();show('loginPanel');}
+el('logoutButton').addEventListener('click',logout);
+el('waitingLogout').addEventListener('click',logout);
+el('rejectedLogout').addEventListener('click',logout);
+el('refreshStudents').addEventListener('click',loadStudents);
+(async()=>{try{const {data,error}=await db.auth.getUser();if(error)throw error;if(recoveryMode||new URLSearchParams(location.hash.slice(1)).get('type')==='recovery'){recoveryMode=true;show('resetPanel');return;}await showUser(data.user);}catch{if(!recoveryMode)show('loginPanel');}})();
+</script>
+</body>
+</html>
